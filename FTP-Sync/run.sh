@@ -12,9 +12,6 @@ ftpusername=$(jq --raw-output ".ftpusername" $CONFIG_PATH)
 ftppassword=$(jq --raw-output ".ftppassword" $CONFIG_PATH)
 addftpflags=$(jq --raw-output ".addftpflags" $CONFIG_PATH)
 KEEP_LAST=$(jq --raw-output ".keep_last // empty" $CONFIG_PATH)
-OUTPUT_DIR=$(jq --raw-output ".output // empty" $CONFIG_PATH)
-KEEP_LAST=$(jq --raw-output ".keep_last // empty" $CONFIG_PATH)
-FILETYPES=$(jq --raw-output ".filetypes // empty" $CONFIG_PATH)
 
 if [[ -z "$OUTPUT_DIR" ]]; then
     OUTPUT_DIR="/"
