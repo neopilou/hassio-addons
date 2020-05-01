@@ -1,0 +1,38 @@
+{
+  "name": "FTP Sync",
+  "version": "dev",
+  "slug": "ftp_sync",
+  "description": "Upload your Hass.io backups to FTP Server",
+  "url": "https://github.com/neopilou/hassio-addons",
+  "startup": "before",
+  "arch": [
+    "aarch64",
+    "amd64",
+    "armhf",
+    "i386"
+  ],
+  "stdin": true,
+  "hassio_api": true,
+  "hassio_role": "manager",
+  "boot": "auto",
+  "map": ["backup", "share"],
+  "options": {
+	"ftpprotocol": "ftp",
+    "ftpserver": "server",
+    "ftpport": "21",
+    "ftpbackupfolder": "homeassistant",
+    "ftpusername": "ftpuser",
+    "ftppassword": "ftppass",
+	"addftpflags": ""
+  },
+  "schema": {
+	"ftpprotocol": "str",
+    "ftpserver": "str", 
+    "ftpport": "int",
+    "ftpbackupfolder": "str",
+    "ftpusername": "str",
+    "ftppassword": "str",
+	"addftpflags": "str",
+	"keep_last": "int(0,)?"
+  }
+}
