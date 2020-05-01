@@ -1,9 +1,10 @@
-Hass.io Add-ons for Home Assistant
+#Hass.io Add-ons for Home Assistant
 
-About
+###About
 
 This repository collects all of my Hass.io add-ons for easier installation.
-Installation
+
+###Installation
 
 Follow the official instructions on the Home Assistant website and use the following URL:
 
