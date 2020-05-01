@@ -39,13 +39,13 @@ The `keep last` option allows the add-on to clean up the local backup directory,
 Example Configuration:
 ```json
 {
-  "ftpprotocol": "ftp"
-  "ftpserver": "192.168.0.1"
-  "ftpport": "'21'"
-  "ftpbackupfolder": "HomeAssistant_Backups"
-  "ftpusername": "username"
-  "ftppassword": "password"
-  "addftpflags": "'flags'"
+  "ftpprotocol": "ftp",
+  "ftpserver": "192.168.0.1",
+  "ftpport": "'21'",
+  "ftpbackupfolder": "HomeAssistant_Backups",
+  "ftpusername": "username",
+  "ftppassword": "password",
+  "addftpflags": "'flags'",
   "keep_last":"1"
 }
 ```
