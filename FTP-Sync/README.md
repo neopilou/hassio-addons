@@ -2,7 +2,7 @@
 Back up your Hass.io snapshots to FTP Server.
 
 ### About
-This add-on allows you to upload your Hass.io snapshots to your FTP Server, keeping your snapshots safe and available in case of hardware failure. Uploads are triggered via a service call, making it easy to automate periodic backups or trigger uploads to Dropbox via script as you would with any other Home Assistant service.
+This add-on allows you to upload your Hass.io snapshots to your FTP Server, keeping your snapshots safe and available in case of hardware failure. Uploads are triggered via a service call, making it easy to automate periodic backups or trigger uploads to FTP server via script as you would with any other Home Assistant service.
 
 ### Installation
 1. Add the add-ons repository to your Hass.io instance: `https://github.com/neopilou/hassio-addons`
