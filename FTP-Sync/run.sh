@@ -26,6 +26,8 @@ fi
 hassbackup="/backup"
 tarpath="$hassbackup/*.tar"
 
+echo "[Info] Listening for messages via stdin service call..."
+
 while read -r msg; do
     # parse JSON
     echo "$msg"
