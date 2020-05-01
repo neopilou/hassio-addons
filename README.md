@@ -13,5 +13,5 @@ https://github.com/neopilou/hassio-addons
 
 ### Add-ons provided by this repository
 
-#### FTP Sync
+#### FTP Sync : 
 Upload your Hass.io backups to FTP Server.
