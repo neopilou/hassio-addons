@@ -2,7 +2,7 @@
 Back up your Hass.io snapshots to FTP Server.
 
 ### About
-This add-on allows you to upload your Hass.io snapshots to your FTP Server, keeping your snapshots safe and available in case of hardware failure. Uploads are triggered via a service call, making it easy to automate periodic backups or trigger uploads to FTP server via script as you would with any other Home Assistant service.
+This add-on allows you to upload your Hass.io snapshots to your FTP Server, keeping your snapshots safe and available in case of hardware failure. Uploads are triggered via a service call, making it easy to automate periodic backups or trigger uploads to FTP Server via script as you would with any other Home Assistant service.
 
 ### Installation
 1. Add the add-ons repository to your Hass.io instance: `https://github.com/neopilou/hassio-addons`
@@ -11,7 +11,7 @@ This add-on allows you to upload your Hass.io snapshots to your FTP Server, keep
 
 ### Usage
 
-FTP Sync uploads all snapshot files (specifically, all `.tar` files) in the Hass.io `/backup` directory to a specified path in your Dropbox. This target path is specified via the `output` option. Once the add-on is started, it is listening for service calls.
+FTP Sync uploads all snapshot files (specifically, all `.tar` files) in the Hass.io `/backup` directory to a specified path in your FTP Server. This target path is specified via the `ftpbackupfolder` option. Once the add-on is started, it is listening for service calls.
 
 After the add-on is configured and started, trigger an upload by calling the `hassio.addon_stdin` service with the following service data:
 
@@ -21,7 +21,7 @@ After the add-on is configured and started, trigger an upload by calling the `ha
 
 You can use Home Assistant automations or scripts to run uploads at certain time intervals, under certain conditions, etc.
 
-The `keep last` option allows the add-on to clean up the local backup directory, deleting the local copies of the snapshots after they have been uploaded to Dropbox. If `keep_last` is set to some integer `x`, only the latest `x` snapshots will be stored locally; all other (older) snapshots will be deleted from local storage. All snapshots are always uploaded to Dropbox, regardless of this option.
+The `keep last` option allows the add-on to clean up the local backup directory, deleting the local copies of the snapshots after they have been uploaded to your FTP Server. If `keep_last` is set to some integer `x`, only the latest `x` snapshots will be stored locally; all other (older) snapshots will be deleted from local storage. All snapshots are always uploaded to your FTP Server, regardless of this option.
 
 ### Configuration
 
@@ -34,7 +34,7 @@ The `keep last` option allows the add-on to clean up the local backup directory,
 |`ftpusername`|Yes|Your FTP Username|
 |`ftppassword`|Yes|Your FTP Password|
 |`addftpflags`|No|Add flags|
-|`keep_last`|No|If set, the number of snapshots to keep locally. If there are more than this number of snapshots stored locally, the older snapshots will be deleted from local storage after being uploaded to Dropbox. If not set, no snapshots are deleted from local storage|
+|`keep_last`|No|If set, the number of snapshots to keep locally. If there are more than this number of snapshots stored locally, the older snapshots will be deleted from local storage after being uploaded to your FTP Server. If not set, no snapshots are deleted from local storage|
 
 Example Configuration:
 ```json
