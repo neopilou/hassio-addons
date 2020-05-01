@@ -10,7 +10,7 @@ Follow the official instructions on the Home Assistant website and use the follo
 
 https://github.com/neopilou/hassio-addons
 
-Add-ons provided by this repository
-FTP Sync
+### Add-ons provided by this repository
 
+#### FTP Sync
 Upload your Hass.io backups to FTP Server.
