@@ -33,6 +33,8 @@
     "ftpusername": "str",
     "ftppassword": "str",
 	"addftpflags": "str",
+	"output": "str",
 	"keep_last": "int(0,)?"
+	"filetypes": "str?"
   }
 }
