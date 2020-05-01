@@ -26,11 +26,18 @@ fi
 hassbackup="/backup"
 tarpath="$hassbackup/*.tar"
 
-echo "[Info] trying to upload $tarpath to $ftpurl"
-curl $addftpflags $credentials -T $tarpath $ftpurl
-echo "[Info] Finished ftp backup"
-
-if [[ "$KEEP_LAST" ]]; then
-    echo "[Info] keep_last option is set, cleaning up files..."
-    python3 /keep_last.py "$KEEP_LAST"
-fi
+while read -r msg; do
+    # parse JSON
+    echo "$msg"
+    cmd="$(echo "$msg" | jq --raw-output '.command')"
+    echo "[Info] Received message with command ${cmd}"
+    if [[ $cmd = "upload" ]]; then
+		echo "[Info] trying to upload $tarpath to $ftpurl"
+		curl $addftpflags $credentials -T $tarpath $ftpurl
+		echo "[Info] Finished ftp backup"
+	fi
+	if [[ "$KEEP_LAST" ]]; then
+		echo "[Info] keep_last option is set, cleaning up files..."
+		python3 /keep_last.py "$KEEP_LAST"
+	fi
+done
