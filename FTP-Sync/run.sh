@@ -36,12 +36,12 @@ while read -r msg; do
                 cd /backup
 		for f in *.tar; do
 			ftpfile="$protocol://$server:$port/$path/$f"
-			#if ( curl $credentials -o/dev/null -sfI "$ftpfile" == 0 ); then
-				#echo "[Info] File $f already exist on $ftpurl and was not uploaded"
-			#else
+			if [[ `wget -S --spider $ftpfile  2>&1 | grep 'HTTP/1.1 200 OK'` ]]; then
+				echo "[Info] File $f already exist on $ftpurl and was not uploaded"
+			else
 				echo "[Info] trying to upload $f to $ftpurl"
-				curl $credentials -z $f $ftpfile
-			#fi
+				curl $credentials -T $f $ftpurl
+			fi
 		done
 		echo "[Info] Finished ftp backup"
 	fi
