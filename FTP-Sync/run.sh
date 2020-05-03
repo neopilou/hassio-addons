@@ -25,7 +25,7 @@ fi
 
 echo "[Info] Listening for messages via stdin service call..."
 
-ftpfile =""
+ftpfile=""
 
 while read -r msg; do
 	# parse JSON
