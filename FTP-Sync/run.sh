@@ -29,9 +29,11 @@ while read -r msg; do
 	# parse JSON
 	echo "$msg"
         cmd="$(echo "$msg" | jq --raw-output '.command')"
-    	echo "[Info] Received message with command ${cmd}"
+    	
     	if [[ $cmd = "upload" ]]; then
+		echo "[Info] Starting ftp sync"
                 cd /backup
+		
 		for f in *.tar; do
 			ftpfile="$protocol://$server:$port/$path/$f"
 			if ( wget -S --spider --user=$username --password=$password $ftpfile 2>&1 | grep '213' ); then
@@ -41,10 +43,15 @@ while read -r msg; do
 				curl $credentials -sT $f $ftpurl
 			fi
 		done
-		echo "[Info] Finished ftp backup"
+		
+		if [[ "$KEEP_LAST" ]]; then
+			echo "[Info] keep_last option is set, cleaning up files..."
+			python3 /keep_last.py "$KEEP_LAST"
+		fi
+		
+		echo "[Info] Finished ftp sync"
+		echo ""
+		echo "[Info] Listening for messages via stdin service call..."
 	fi
-	if [[ "$KEEP_LAST" ]]; then
-		echo "[Info] keep_last option is set, cleaning up files..."
-		python3 /keep_last.py "$KEEP_LAST"
-	fi
+	
 done
