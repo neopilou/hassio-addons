@@ -4,27 +4,26 @@ echo "[Info] Starting FTP Backup docker!"
 
 CONFIG_PATH=/data/options.json
 
-ftpprotocol=$(jq --raw-output ".ftpprotocol" $CONFIG_PATH)
-ftpserver=$(jq --raw-output ".ftpserver" $CONFIG_PATH)
-ftpport=$(jq --raw-output ".ftpport" $CONFIG_PATH)
-ftpbackupfolder=$(jq --raw-output ".ftpbackupfolder" $CONFIG_PATH)
-ftpusername=$(jq --raw-output ".ftpusername" $CONFIG_PATH)
-ftppassword=$(jq --raw-output ".ftppassword" $CONFIG_PATH)
-addftpflags=$(jq --raw-output ".addftpflags" $CONFIG_PATH)
+protocol=$(jq --raw-output ".ftpprotocol" $CONFIG_PATH)
+server=$(jq --raw-output ".ftpserver" $CONFIG_PATH)
+port=$(jq --raw-output ".ftpport" $CONFIG_PATH)
+path=$(jq --raw-output ".ftpbackupfolder" $CONFIG_PATH)
+username=$(jq --raw-output ".ftpusername" $CONFIG_PATH)
+password=$(jq --raw-output ".ftppassword" $CONFIG_PATH)
 KEEP_LAST=$(jq --raw-output ".keep_last // empty" $CONFIG_PATH)
 
 if [[ -z "$OUTPUT_DIR" ]]; then
     OUTPUT_DIR="/"
 fi
 
-ftpurl="$ftpprotocol://$ftpserver:$ftpport/$ftpbackupfolder/"
+#ftpurl="$protocol://$server:$port/$path/"
+ftpurl="$server/$path/"
 credentials=""
 if [ "${#ftppassword}" -gt "0" ]; then
-	credentials="-u $ftpusername:$ftppassword"
+	credentials="-u $username:$password"
 fi
 	
-hassbackup="/backup"
-tarpath="$hassbackup/*.tar"
+tarpath="/backup/*.tar"
 
 echo "[Info] Listening for messages via stdin service call..."
 
@@ -35,7 +34,15 @@ while read -r msg; do
     echo "[Info] Received message with command ${cmd}"
     if [[ $cmd = "upload" ]]; then
 		echo "[Info] trying to upload $tarpath to $ftpurl"
-		curl $addftpflags $credentials -T $tarpath $ftpurl
+		#curl $credentials -T $tarpath $ftpurl
+		ftp -i -n $ftpurl $port << END_SCRIPT
+                quote USER $username
+                quote PASS $password
+                pwd
+                bin
+                put $tarpath
+                quit
+		END_SCRIPT
 		echo "[Info] Finished ftp backup"
 	fi
 	if [[ "$KEEP_LAST" ]]; then
