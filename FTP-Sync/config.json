@@ -23,7 +23,7 @@
     "password": "password"
   },
   "schema": {
-	"protocol": "str",
+    "protocol": "str",
     "server": "str", 
     "port": "int",
     "path": "str",
