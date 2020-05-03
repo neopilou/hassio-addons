@@ -25,7 +25,7 @@ fi
 
 echo "[Info] Listening for messages via stdin service call..."
 
-ftpfile=""
+#ftpfile=""
 
 while read -r msg; do
 	# parse JSON
@@ -35,13 +35,13 @@ while read -r msg; do
     	if [[ $cmd = "upload" ]]; then
                 cd /backup
 		for f in *.tar; do
-			ftpfile="$protocol://$username:$password@$server:$port/$path/$f"
-			if ( wget --spider -v $ftpfile ); then
-				echo "[Info] File $f already exist on $ftpurl and was not uploaded"
-			else
+			#ftpfile="$protocol://$username:$password@$server:$port/$path/$f"
+			#if ( wget --spider -v $ftpfile ); then
+				#echo "[Info] File $f already exist on $ftpurl and was not uploaded"
+			#else
 				echo "[Info] trying to upload $f to $ftpurl"
-				curl $credentials -T $f $ftpurl
-			fi
+				curl $credentials -sT $f $ftpurl
+			#fi
 		done
 		echo "[Info] Finished ftp backup"
 	fi
