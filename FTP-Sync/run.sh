@@ -19,7 +19,7 @@ fi
 ftpurl="$protocol://$server:$port/$path/"
 
 credentials=""
-if [ "${#ftppassword}" -gt "0" ]; then
+if [ "${#password}" -gt "0" ]; then
 	credentials="-u $username:$password"
 fi
 	
