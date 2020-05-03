@@ -40,7 +40,7 @@ while read -r msg; do
 				#echo "[Info] File $f already exist on $ftpurl and was not uploaded"
 			#else
 				echo "[Info] trying to upload $f to $ftpurl"
-				curl $credentials -T -z $f $ftpfile
+				curl $credentials -z $f $ftpfile
 			#fi
 		done
 		echo "[Info] Finished ftp backup"
