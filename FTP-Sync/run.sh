@@ -26,16 +26,19 @@ fi
 echo "[Info] Listening for messages via stdin service call..."
 
 while read -r msg; do
-    # parse JSON
-    echo "$msg"
-    cmd="$(echo "$msg" | jq --raw-output '.command')"
-    echo "[Info] Received message with command ${cmd}"
-    if [[ $cmd = "upload" ]]; then
+	# parse JSON
+	echo "$msg"
+        cmd="$(echo "$msg" | jq --raw-output '.command')"
+    	echo "[Info] Received message with command ${cmd}"
+    	if [[ $cmd = "upload" ]]; then
                 cd /backup
 		for f in *.tar; do
-			#if ( curl -o/dev/null -sfI "$url" ); then
-			echo "[Info] trying to upload $f to $ftpurl"
-			curl $credentials -T $f $ftpurl
+			if ( curl -o/dev/null -sfI "$ftpurl/$f" ); then
+				echo "[Info] File $f already exist on $ftpurl and was not uploaded"
+			else
+				echo "[Info] trying to upload $f to $ftpurl"
+				curl $credentials -T $f $ftpurl
+			fi
 		done
 		echo "[Info] Finished ftp backup"
 	fi
