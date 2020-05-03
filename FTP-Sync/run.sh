@@ -16,14 +16,14 @@ if [[ -z "$OUTPUT_DIR" ]]; then
     OUTPUT_DIR="/"
 fi
 
-#ftpurl="$protocol://$server:$port/$path/"
-ftpurl="$server/$path/"
+ftpurl="$protocol://$server:$port/$path/"
+
 credentials=""
 if [ "${#ftppassword}" -gt "0" ]; then
 	credentials="-u $username:$password"
 fi
 	
-tarpath="/backup/*.tar"
+backuppath="/backup/"
 
 echo "[Info] Listening for messages via stdin service call..."
 
@@ -34,15 +34,7 @@ while read -r msg; do
     echo "[Info] Received message with command ${cmd}"
     if [[ $cmd = "upload" ]]; then
 		echo "[Info] trying to upload $tarpath to $ftpurl"
-		#curl $credentials -T $tarpath $ftpurl
-		ftp -i -n $ftpurl $port << END_SCRIPT
-                quote USER $username
-                quote PASS $password
-                pwd
-                bin
-                put $tarpath
-                quit
-		END_SCRIPT
+		curl $credentials -T $backuppath $ftpurl
 		echo "[Info] Finished ftp backup"
 	fi
 	if [[ "$KEEP_LAST" ]]; then
