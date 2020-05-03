@@ -18,21 +18,19 @@
   "map": ["backup", "share"],
   "options": {
 	"ftpprotocol": "ftp",
-    "ftpserver": "server",
-    "ftpport": "21",
-    "ftpbackupfolder": "homeassistant",
-    "ftpusername": "ftpuser",
-    "ftppassword": "ftppass",
-	"addftpflags": ""
+    "server": "server",
+    "port": "21",
+    "path": "homeassistant",
+    "username": "ftpuser",
+    "password": "ftppass"
   },
   "schema": {
-	"ftpprotocol": "str",
-    "ftpserver": "str", 
-    "ftpport": "int",
-    "ftpbackupfolder": "str",
-    "ftpusername": "str",
-    "ftppassword": "str",
-	"addftpflags": "str",
-	"keep_last": "int(0,)?"
+	"protocol": "str",
+    "server": "str", 
+    "port": "int",
+    "path": "str",
+    "username": "str",
+    "password": "str",
+    "keep_last": "int(0,)?"
   }
 }
