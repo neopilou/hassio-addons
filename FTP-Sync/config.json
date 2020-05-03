@@ -17,7 +17,7 @@
   "boot": "auto",
   "map": ["backup", "share"],
   "options": {
-	"ftpprotocol": "ftp",
+    "protocol": "ftp",
     "server": "server",
     "port": "21",
     "path": "homeassistant",
