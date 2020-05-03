@@ -34,7 +34,7 @@ while read -r msg; do
                 cd /backup
 		for f in *.tar; do
 			ftpfile="$protocol://$server:$port/$path/$f"
-			if ( wget -S --spider --user=$username --password='$password' $ftpfile 2>&1 | grep '213' ); then
+			if ( wget -S --spider --user=$username --password=$password $ftpfile 2>&1 | grep '213' ); then
 				echo "[Info] File $f already exist on $ftpurl"
 			else
 				echo "[Info] Uploading $f to $ftpurl"
