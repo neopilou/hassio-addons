@@ -12,6 +12,8 @@
     "i386"
   ],
   "stdin": true,
+  "hassio_api": true,
+  "hassio_role": "manager",
   "boot": "auto",
   "map": ["backup"],
   "options": {
