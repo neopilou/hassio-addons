@@ -12,10 +12,10 @@
     "i386"
   ],
   "stdin": true,
-  "hassio_api": true,
-  "hassio_role": "manager",
+  #"hassio_api": true,
+  #"hassio_role": "manager",
   "boot": "auto",
-  "map": ["backup", "share"],
+  "map": ["backup"],
   "options": {
     "protocol": "ftp",
     "server": "server",
