@@ -34,7 +34,9 @@ while read -r msg; do
     echo "[Info] Received message with command ${cmd}"
     if [[ $cmd = "upload" ]]; then
 		echo "[Info] trying to upload $tarpath to $ftpurl"
-		curl $credentials -T $backuppath $ftpurl
+		for f in /backup./*.tar; do
+			curl $credentials -T $f $ftpurl
+		done
 		echo "[Info] Finished ftp backup"
 	fi
 	if [[ "$KEEP_LAST" ]]; then
