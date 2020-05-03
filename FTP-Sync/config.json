@@ -21,8 +21,8 @@
     "server": "server",
     "port": "21",
     "path": "homeassistant",
-    "username": "ftpuser",
-    "password": "ftppass"
+    "username": "username",
+    "password": "password"
   },
   "schema": {
 	"protocol": "str",
