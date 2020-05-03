@@ -34,7 +34,7 @@ while read -r msg; do
                 cd /backup
 		for f in *.tar; do
 			file = "$ftpurl$f"
-			if ( curl $credentials -sfI $file ); then
+			if ( curl $credentials $file --head ); then
 				echo "[Info] File $f already exist on $ftpurl and was not uploaded"
 			else
 				echo "[Info] trying to upload $f to $ftpurl"
