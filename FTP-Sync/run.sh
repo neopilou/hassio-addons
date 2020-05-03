@@ -4,12 +4,12 @@ echo "[Info] Starting FTP Backup docker!"
 
 CONFIG_PATH=/data/options.json
 
-protocol=$(jq --raw-output ".ftpprotocol" $CONFIG_PATH)
-server=$(jq --raw-output ".ftpserver" $CONFIG_PATH)
-port=$(jq --raw-output ".ftpport" $CONFIG_PATH)
-path=$(jq --raw-output ".ftpbackupfolder" $CONFIG_PATH)
-username=$(jq --raw-output ".ftpusername" $CONFIG_PATH)
-password=$(jq --raw-output ".ftppassword" $CONFIG_PATH)
+protocol=$(jq --raw-output ".protocol" $CONFIG_PATH)
+server=$(jq --raw-output ".server" $CONFIG_PATH)
+port=$(jq --raw-output ".port" $CONFIG_PATH)
+path=$(jq --raw-output ".path" $CONFIG_PATH)
+username=$(jq --raw-output ".username" $CONFIG_PATH)
+password=$(jq --raw-output ".password" $CONFIG_PATH)
 KEEP_LAST=$(jq --raw-output ".keep_last // empty" $CONFIG_PATH)
 
 if [[ -z "$OUTPUT_DIR" ]]; then
