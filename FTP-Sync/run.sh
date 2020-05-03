@@ -31,8 +31,10 @@ while read -r msg; do
     cmd="$(echo "$msg" | jq --raw-output '.command')"
     echo "[Info] Received message with command ${cmd}"
     if [[ $cmd = "upload" ]]; then
-		echo "[Info] trying to upload $tarpath to $ftpurl"
-		for f in /backup/*.tar; do
+                cd /backup
+		for f in *.tar; do
+			#if ( curl -o/dev/null -sfI "$url" ); then
+			echo "[Info] trying to upload $f to $ftpurl"
 			curl $credentials -T $f $ftpurl
 		done
 		echo "[Info] Finished ftp backup"
