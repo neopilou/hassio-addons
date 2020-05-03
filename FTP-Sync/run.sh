@@ -22,8 +22,6 @@ credentials=""
 if [ "${#password}" -gt "0" ]; then
 	credentials="-u $username:$password"
 fi
-	
-backuppath="/backup/"
 
 echo "[Info] Listening for messages via stdin service call..."
 
@@ -34,7 +32,7 @@ while read -r msg; do
     echo "[Info] Received message with command ${cmd}"
     if [[ $cmd = "upload" ]]; then
 		echo "[Info] trying to upload $tarpath to $ftpurl"
-		for f in /backup./*.tar; do
+		for f in /backup/*.tar; do
 			curl $credentials -T $f $ftpurl
 		done
 		echo "[Info] Finished ftp backup"
