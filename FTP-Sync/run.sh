@@ -35,8 +35,8 @@ while read -r msg; do
     	if [[ $cmd = "upload" ]]; then
                 cd /backup
 		for f in *.tar; do
-			ftpfile="$protocol://$server:$port/$path/$f"
-			if [[ wget -S --spider $ftpfile  2>&1 | grep 'HTTP/1.1 200 OK' ]]; then
+			ftpfile="$protocol://$username:$password@$server:$port/$path/$f"
+			if [[ `wget -S --spider $ftpfile  2>&1 | grep 'HTTP/1.1 200 OK'` ]]; then
 				echo "[Info] File $f already exist on $ftpurl and was not uploaded"
 			else
 				echo "[Info] trying to upload $f to $ftpurl"
