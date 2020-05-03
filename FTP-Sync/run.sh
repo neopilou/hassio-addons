@@ -25,6 +25,8 @@ fi
 
 echo "[Info] Listening for messages via stdin service call..."
 
+ftpfile =""
+
 while read -r msg; do
 	# parse JSON
 	echo "$msg"
@@ -33,8 +35,8 @@ while read -r msg; do
     	if [[ $cmd = "upload" ]]; then
                 cd /backup
 		for f in *.tar; do
-			file = "$protocol://$server:$port/$path/$f"
-			if ( curl $credentials -o/dev/null -sfI "$file" ); then
+			ftpfile="$protocol://$server:$port/$path/$f"
+			if ( curl $credentials -o/dev/null -sfI "$ftpfile" --head ); then
 				echo "[Info] File $f already exist on $ftpurl and was not uploaded"
 			else
 				echo "[Info] trying to upload $f to $ftpurl"
