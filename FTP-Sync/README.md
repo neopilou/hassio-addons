@@ -11,7 +11,7 @@ This add-on allows you to upload your Hass.io snapshots to your FTP Server, keep
 
 ### Usage
 
-FTP Sync uploads all snapshot files (specifically, all `.tar` files) in the Hass.io `/backup` directory to a specified path in your FTP Server. This target path is specified via the `ftpbackupfolder` option. Once the add-on is started, it is listening for service calls.
+FTP Sync uploads all snapshot files (specifically, all `.tar` files) in the Hass.io `/backup` directory to a specified path in your FTP Server. This target path is specified via the `path` option. Once the add-on is started, it is listening for service calls.
 
 After the add-on is configured and started, trigger an upload by calling the `hassio.addon_stdin` service with the following service data:
 
@@ -27,25 +27,23 @@ The `keep last` option allows the add-on to clean up the local backup directory,
 
 |Parameter|Required|Description|
 |---------|--------|-----------|
-|`ftpprotocol`|Yes|FTP protocol to use|
-|`ftpserver`|Yes|URL of your FTP Server.|
-|`ftpport`|Yes|Port of your FTP Server|
-|`ftpbackupfolder`|Yes|Path on your FTP server where backups will be synchronized|
-|`ftpusername`|Yes|Your FTP Username|
-|`ftppassword`|Yes|Your FTP Password|
-|`addftpflags`|No|Add flags|
+|`protocol`|Yes|FTP protocol to use|
+|`server`|Yes|URL of your FTP Server.|
+|`port`|Yes|Port of your FTP Server|
+|`path`|Yes|Path on your FTP server where backups will be synchronized|
+|`username`|Yes|Your FTP Username|
+|`password`|Yes|Your FTP Password|
 |`keep_last`|No|If set, the number of snapshots to keep locally. If there are more than this number of snapshots stored locally, the older snapshots will be deleted from local storage after being uploaded to your FTP Server. If not set, no snapshots are deleted from local storage|
 
 Example Configuration:
 ```json
 {
-  "ftpprotocol": "ftp",
-  "ftpserver": "192.168.0.1",
-  "ftpport": "'21'",
-  "ftpbackupfolder": "HomeAssistant_Backups",
-  "ftpusername": "username",
-  "ftppassword": "password",
-  "addftpflags": "'flags'",
+  "protocol": "ftp",
+  "server": "192.168.0.1",
+  "port": "'21'",
+  "path": "HomeAssistant_Backups",
+  "username": "username",
+  "password": "password",
   "keep_last":"1"
 }
 ```
