@@ -28,7 +28,7 @@ ng_url="http://$netgear_url/RST_statistic.htm"
 
 while true; do
 
-	curl $ng_credentials -s $ng_url
+	#curl $ng_credentials -s $ng_url
 	
 	txbs="$(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm')" #| /bin/sed -n 's/var wan_txbs="\(.*\)";/\1/p') * 8 / 1000
 	rxbs="$(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm')" #| /bin/sed -n 's/var wan_rxbs="\(.*\)";/\1/p') * 8 / 1000
