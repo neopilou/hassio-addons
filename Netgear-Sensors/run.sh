@@ -27,7 +27,9 @@ topic_rxbs="$topic/rxbs"
 while true; do
 	
 	txbs= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm') #| /bin/sed -n 's/var wan_txbs="\(.*\)";/\1/p') * 8 / 1000
-	rxbs= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm') #| /bin/sed -n 's/var wan_txbs="\(.*\)";/\1/p') * 8 / 1000
+	rxbs= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm') #| /bin/sed -n 's/var wan_rxbs="\(.*\)";/\1/p') * 8 / 1000
+	
+	sedtxbs= $(sed -n 's/var wan_txbs="\(.*\)";/\1/p' < $txbs)
 	
 	mosquitto_pub -h $mosquitto_server -p $mosquitto_port -u $mosquitto_username -p $mosquitto_password -t $topic_txbs -m $txbs
 	mosquitto_pub -h $mosquitto_server -p $mosquitto_port -u $mosquitto_username -p $mosquitto_password -t $topic_rxbs -m $rxbs
