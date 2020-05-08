@@ -9,7 +9,6 @@ RUN apk add --no-cache jq curl
 
 # Copy data
 COPY run.sh /
-COPY keep_last.py /
 RUN ["chmod", "a+x", "/run.sh"]
 WORKDIR /
 
