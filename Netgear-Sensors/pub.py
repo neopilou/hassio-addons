@@ -37,7 +37,7 @@ def main(argv):
 
 	mqttc = mqtt.Client("netgear")  # Create instance of client with client ID “digitest”
 	mqttc.username_pw_set(user, pwd)
-	mqttc.connect(url, port)  # Connect to (broker, port, keepalive-time)
+	mqttc.connect(url, int(port))  # Connect to (broker, port, keepalive-time)
 	mqttc.loop_start()  # Start networking daemon
 	mqttc.publish(topic + "/txbs", txbs)  # Publish message to “digitest /test1” topic
 	mqttc.loop_stop()  # Kill networking daemon

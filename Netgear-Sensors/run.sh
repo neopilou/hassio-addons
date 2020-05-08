@@ -4,11 +4,11 @@ echo "[Info] Starting Netgear Sensors docker!"
 
 CONFIG_PATH=/data/options.json
 
-mosquitto_server=$(jq --raw-output ".mosquitto_server" $CONFIG_PATH)
-mosquitto_port=$(jq --raw-output ".mosquitto_port" $CONFIG_PATH)
+mqtt_server=$(jq --raw-output ".mqtt_server" $CONFIG_PATH)
+mqtt_port=$(jq --raw-output ".mqtt_port" $CONFIG_PATH)
 topic=$(jq --raw-output ".topic" $CONFIG_PATH)
-mosquitto_username=$(jq --raw-output ".mosquitto_username" $CONFIG_PATH)
-mosquitto_password=$(jq --raw-output ".mosquitto_password" $CONFIG_PATH)
+mqtt_username=$(jq --raw-output ".mqtt_username" $CONFIG_PATH)
+mqtt_password=$(jq --raw-output ".mqtt_password" $CONFIG_PATH)
 netgear_url=$(jq --raw-output ".netgear_url" $CONFIG_PATH)
 netgear_username=$(jq --raw-output ".netgear_username" $CONFIG_PATH)
 netgear_password=$(jq --raw-output ".netgear_password" $CONFIG_PATH)
@@ -34,7 +34,7 @@ while true; do
 	
 	echo "$sedtxbs"
 	
-	python3 /pub.py -u $mosquitto_server -p $mosquitto_port -l $mosquitto_username -m $mosquitto_password -o $topic -t $sedtxbs -r $sedrxbs
+	python3 /pub.py -u $mqtt_server -p $mqtt_port -l $mqtt_username -m $mqtt_password -o $topic -t $sedtxbs -r $sedrxbs
 	
 	sleep $refresh_interval
 	

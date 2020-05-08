@@ -1,8 +1,8 @@
 # Hass.io Add-on: Netgear Sensors
-Publish txbs and rxbs in Mb/s of Netgear router on Mosquitto
+Publish txbs and rxbs in Mb/s of Netgear router on MQTT
 
 ### About
-This add-on allows you to publish txbs and rxbs traffic of you netgear router on Mosquitto
+This add-on allows you to publish txbs and rxbs traffic of you netgear router on MQTT
 
 ### Installation
 1. Add the add-ons repository to your Hass.io instance: `https://github.com/neopilou/hassio-addons`
@@ -13,11 +13,11 @@ This add-on allows you to publish txbs and rxbs traffic of you netgear router on
 
 |Parameter|Required|Description|
 |---------|--------|-----------|
-|`mosquitto_server`|Yes|URL of your Mosquitto Server.|
-|`mosquitto_port`|Yes|Port of your Mosquitto Server|
-|`mosquitto_username`|Yes|Your Mosquitto Username|
-|`mosquitto_password`|Yes|Your Mosquitto Password|
-|`topic`|Yes|Topic on your Mosquitto server where txbs and rxbs will be published|
+|`mqtt_server`|Yes|URL of your MQTT Server.|
+|`mqtt_port`|Yes|Port of your MQTT Server|
+|`mqtt_username`|Yes|Your MQTT Username|
+|`mqtt_password`|Yes|Your MQTT Password|
+|`topic`|Yes|Topic on your MQTT server where txbs and rxbs will be published|
 |`netgear_url`|Yes|Your Netgear Router URL|
 |`netgear_username`|Yes|Your Netgear Router Username|
 |`netgear_password`|Yes|Your Netgear Router Password|
@@ -25,10 +25,10 @@ This add-on allows you to publish txbs and rxbs traffic of you netgear router on
 Example Configuration:
 ```json
 {
-  "mosquitto_server": "localhost",
+  "mqtt_server": "localhost",
   "port": "'1883'",
-  "mosquitto_username": "username",
-  "mosquitto_password": "password",
+  "mqtt_username": "username",
+  "mqtt_password": "password",
   "topic": "sensors/netgear",
   "netgear_url": "192.168.0.1",
   "netgear_username": "username",
