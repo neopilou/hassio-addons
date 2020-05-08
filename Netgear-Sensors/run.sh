@@ -31,8 +31,11 @@ while true; do
 	
 	sedtxbs= $(sed -n 's/var wan_txbs="\(.*\)";/\1/p' < $txbs)
 	
+	echo $sedtxbs
+	
 	mosquitto_pub -h $mosquitto_server -p $mosquitto_port -u $mosquitto_username -p $mosquitto_password -t $topic_txbs -m $txbs
 	mosquitto_pub -h $mosquitto_server -p $mosquitto_port -u $mosquitto_username -p $mosquitto_password -t $topic_rxbs -m $rxbs
+	mosquitto_pub -h localhost -t sensors/netgear/txbs -m $sedtxbs	
 		
 	sleep $refresh_interval
 	
