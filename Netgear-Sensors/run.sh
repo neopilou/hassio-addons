@@ -25,9 +25,11 @@ topic_txbs="$topic/txbs"
 topic_rxbs="$topic/rxbs"
 
 while true; do
+
+	curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm'
 	
-	txbs= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm') #| /bin/sed -n 's/var wan_txbs="\(.*\)";/\1/p') * 8 / 1000
-	rxbs= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm') #| /bin/sed -n 's/var wan_rxbs="\(.*\)";/\1/p') * 8 / 1000
+	txbs= "$(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm')" #| /bin/sed -n 's/var wan_txbs="\(.*\)";/\1/p') * 8 / 1000
+	rxbs= "$(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm')" #| /bin/sed -n 's/var wan_rxbs="\(.*\)";/\1/p') * 8 / 1000
 	
 	echo "$txbs"
 	
