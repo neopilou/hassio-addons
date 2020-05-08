@@ -15,3 +15,6 @@ https://github.com/neopilou/hassio-addons
 
 #### FTP Sync : 
 Upload your Hass.io backups to FTP Server.
+
+#### Netgear Sensors
+Publish txbs and rxbs of Netgear router on Mosquitto
