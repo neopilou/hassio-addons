@@ -23,15 +23,15 @@ ng_url="http://$netgear_url/RST_statistic.htm"
 while true; do
 	
 	ng_data="$(curl $ng_credentials -s $ng_url)" 
-	
-	echo "$ng_data"
-	
+
+	rxbs="$(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | sed -n 's/var wan_rxbs="\(.*\)";/\1/p')"
+
 	sedtxbs="$(sed -n 's/var wan_txbs="\(.*\)";/\1/p' < $ng_data)"
 	sedrxbs="$(sed -n 's/var wan_rxbs="\(.*\)";/\1/p' < $ng_data)"
 	
-	echo "$sedtxbs"
+	echo "$rxbs"
 	
-	python3 /pub.py -u $mqtt_server -p $mqtt_port -l $mqtt_username -m $mqtt_password -o $topic -t $sedtxbs -r $sedrxbs
+	python3 /pub.py -u $mqtt_server -p $mqtt_port -l $mqtt_username -m $mqtt_password -o $topic --txbs $sedtxbs --rxbs $sedrxbs
 	
 	sleep $refresh_interval
 	

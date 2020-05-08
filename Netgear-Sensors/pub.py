@@ -41,7 +41,8 @@ def main(argv):
 	mqttc.loop_start() 
 	mqttc.publish(topic + "/txbs", txbs)
 	mqttc.publish(topic + "/rxbs", rxbs)
-	mqttc.loop_stop() 
+	mqttc.loop_stop()
+	
 
 if __name__ == "__main__":
 	main(sys.argv[1:])
