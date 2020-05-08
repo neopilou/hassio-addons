@@ -35,12 +35,13 @@ def main(argv):
 		elif opt in ("-r", "--rxbs"):
 			rxbs = arg
 
-	mqttc = mqtt.Client("netgear")  # Create instance of client with client ID “digitest”
+	mqttc = mqtt.Client("netgear")
 	mqttc.username_pw_set(user, pwd)
-	mqttc.connect(url, int(port))  # Connect to (broker, port, keepalive-time)
-	mqttc.loop_start()  # Start networking daemon
-	mqttc.publish(topic + "/txbs", txbs)  # Publish message to “digitest /test1” topic
-	mqttc.loop_stop()  # Kill networking daemon
+	mqttc.connect(url, int(port)) 
+	mqttc.loop_start() 
+	mqttc.publish(topic + "/txbs", txbs)
+	mqttc.publish(topic + "/rxbs", rxbs)
+	mqttc.loop_stop() 
 
 if __name__ == "__main__":
 	main(sys.argv[1:])

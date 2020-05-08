@@ -21,16 +21,13 @@ echo "[Info] Starting uploading txbs and rxbs every $refresh_interval seconds"
 ng_url="http://$netgear_url/RST_statistic.htm"
 
 while true; do
-
-	#curl $ng_credentials -s $ng_url
 	
-	ng_data="$(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm')" #| /bin/sed -n 's/var wan_txbs="\(.*\)";/\1/p') * 8 / 1000
-	#rxbs="$(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm')" #| /bin/sed -n 's/var wan_rxbs="\(.*\)";/\1/p') * 8 / 1000
+	ng_data="$(curl $ng_credentials -s $ng_url)" 
 	
 	echo "$ng_data"
 	
-	sedtxbs=$(sed -n 's/var wan_txbs="\(.*\)";/\1/p' < $ng_data)
-	sedrxbs=$(sed -n 's/var wan_rxbs="\(.*\)";/\1/p' < $ng_data)
+	sedtxbs="$(sed -n 's/var wan_txbs="\(.*\)";/\1/p' < $ng_data)"
+	sedrxbs="$(sed -n 's/var wan_rxbs="\(.*\)";/\1/p' < $ng_data)"
 	
 	echo "$sedtxbs"
 	
