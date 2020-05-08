@@ -1,5 +1,5 @@
 # Hass.io Add-on: Netgear Sensors
-Publish txbs and rxbs of Netgear router on Mosquitto
+Publish txbs and rxbs in Mb/s of Netgear router on Mosquitto
 
 ### About
 This add-on allows you to publish txbs and rxbs traffic of you netgear router on Mosquitto

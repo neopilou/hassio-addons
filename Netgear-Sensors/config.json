@@ -2,7 +2,7 @@
   "name": "Netgear Sensors",
   "version": "0.01",
   "slug": "netgear_sensors",
-  "description": "Publish txbs and rxbs of Netgear router on Mosquitto",
+  "description": "Publish txbs and rxbs in Mb/s of Netgear router on Mosquitto",
   "url": "https://github.com/neopilou/hassio-addons",
   "startup": "before",
   "arch": [
