@@ -1,0 +1,37 @@
+{
+  "name": "Netgear Sensors",
+  "version": "0.04",
+  "slug": "netgear_sensors",
+  "description": "Publish txbs and rxbs of Netgear router on Mosquitto",
+  "url": "https://github.com/neopilou/hassio-addons",
+  "startup": "before",
+  "arch": [
+    "aarch64",
+    "amd64",
+    "armhf",
+    "i386"
+  ],
+  "boot": "auto",
+  "options": {
+    "mosquitto_server": "localhost",
+	"mosquitto_port": "1883",    
+    "mosquitto_username": "username",
+    "mosquitto_password": "password",
+	"topic": "sensors/netgear",
+	"netgear_url": "url",
+	"netgear_username": "admin",
+	"netgear_password": "password",
+	"refresh_interval": "5"
+  },
+  "schema": {
+    "mosquitto_server": "str",
+    "mosquitto_port": "int",    
+    "mosquitto_username": "str",
+    "mosquitto_password": "str",
+	"topic": "str",
+	"netgear_url": "str",
+    "netgear_username": "str",
+    "netgear_password": "str",
+	"refresh_interval": "int"
+  }
+}
