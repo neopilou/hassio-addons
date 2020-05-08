@@ -21,17 +21,9 @@ echo "[Info] Starting uploading txbs and rxbs every $refresh_interval seconds"
 ng_url="http://$netgear_url/RST_statistic.htm"
 
 while true; do
-	
-	#ng_data="$(curl $ng_credentials -s $ng_url)" 
 
 	txbs="$(curl $ng_credentials -s $ng_url | sed -n 's/var wan_txbs="\(.*\)";/\1/p')"
 	rxbs="$(curl $ng_credentials -s $ng_url | sed -n 's/var wan_rxbs="\(.*\)";/\1/p')"
-
-	#sedtxbs="$(sed -n 's/var wan_txbs="\(.*\)";/\1/p' < $ng_data)"
-	#sedrxbs="$(sed -n 's/var wan_rxbs="\(.*\)";/\1/p' < $ng_data)"
-	
-	echo "$txbs"
-	echo "$rxbs"
 	
 	python3 /pub.py -u $mqtt_server -p $mqtt_port -l $mqtt_username -m $mqtt_password -o $topic --txbs $txbs --rxbs $rxbs
 	

@@ -39,8 +39,8 @@ def main(argv):
 	mqttc.username_pw_set(user, pwd)
 	mqttc.connect(url, int(port)) 
 	mqttc.loop_start() 
-	mqttc.publish(topic + "/txbs", txbs)
-	mqttc.publish(topic + "/rxbs", rxbs)
+	mqttc.publish(topic + "/txbs", (int(txbs)*8/1000))
+	mqttc.publish(topic + "/rxbs", (int(rxbs)*8/1000))
 	mqttc.loop_stop()
 	
 
