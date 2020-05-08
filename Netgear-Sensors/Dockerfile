@@ -5,7 +5,7 @@ FROM $BUILD_FROM
 ENV LANG C.UTF-8
 
 # Setup base
-RUN apk add --no-cache jq curl mosquitto_pub sed sleep
+RUN apk add --no-cache jq curl mosquitto_pub sed
 
 # Copy data
 COPY run.sh /
