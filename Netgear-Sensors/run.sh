@@ -26,11 +26,11 @@ topic_rxbs="$topic/rxbs"
 
 while true; do
 	
-	txbs= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | /bin/sed -n 's/var wan_txbs="\(.*\)";/\1/p') * 8 / 1000
-	rxbs= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | /bin/sed -n 's/var wan_txbs="\(.*\)";/\1/p') * 8 / 1000
+	txbs= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm') #| /bin/sed -n 's/var wan_txbs="\(.*\)";/\1/p') * 8 / 1000
+	rxbs= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm') #| /bin/sed -n 's/var wan_txbs="\(.*\)";/\1/p') * 8 / 1000
 	
-	/usr/bin/mosquitto_pub -h $mosquitto_server -p $mosquitto_port -u $mosquitto_username -p $mosquitto_password -t $topic_txbs -m $txbs
-	/usr/bin/mosquitto_pub -h $mosquitto_server -p $mosquitto_port -u $mosquitto_username -p $mosquitto_password -t $topic_rxbs -m $rxbs
+	mosquitto_pub -h $mosquitto_server -p $mosquitto_port -u $mosquitto_username -p $mosquitto_password -t $topic_txbs -m $txbs
+	mosquitto_pub -h $mosquitto_server -p $mosquitto_port -u $mosquitto_username -p $mosquitto_password -t $topic_rxbs -m $rxbs
 		
 	sleep $refresh_interval
 	
