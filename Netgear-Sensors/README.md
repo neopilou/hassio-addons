@@ -2,8 +2,7 @@
 Publish txbs and rxbs in Mb/s of Netgear router on MQTT
 
 ### About
-This add-on allows you to publish txbs and rxbs traffic of you netgear router on MQTT
-This add-on work with Netgear R7800 (other models are not tested yet)
+This add-on allows you to publish txbs and rxbs traffic of you netgear router on MQTT, work with Netgear R7800 (other models are not tested yet)
 
 ### Installation
 1. Add the add-ons repository to your Hass.io instance: `https://github.com/neopilou/hassio-addons`
