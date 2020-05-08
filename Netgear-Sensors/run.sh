@@ -24,7 +24,7 @@ rxbs=""
 topic_txbs="$topic/txbs"
 topic_rxbs="$topic/rxbs"
 
-ng_url = "http://$netgear_url/RST_statistic.htm"
+ng_url="http://$netgear_url/RST_statistic.htm"
 
 while true; do
 
