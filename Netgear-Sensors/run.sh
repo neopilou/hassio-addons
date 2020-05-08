@@ -14,7 +14,7 @@ netgear_username=$(jq --raw-output ".netgear_username" $CONFIG_PATH)
 netgear_password=$(jq --raw-output ".netgear_password" $CONFIG_PATH)
 refresh_interval=$(jq --raw-output ".refresh_interval" $CONFIG_PATH)
 
-ng_credentials="--user $netgear_username:$netgear_password"
+ng_credentials="-u $netgear_username:$netgear_password"
 
 echo "[Info] Starting uploading txbs and rxbs every $refresh_interval seconds"
 
@@ -24,9 +24,11 @@ rxbs=""
 topic_txbs="$topic/txbs"
 topic_rxbs="$topic/rxbs"
 
+ng_url = "http://$netgear_url/RST_statistic.htm"
+
 while true; do
 
-	curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm'
+	curl $ng_credentials -s $ng_url
 	
 	txbs= "$(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm')" #| /bin/sed -n 's/var wan_txbs="\(.*\)";/\1/p') * 8 / 1000
 	rxbs= "$(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm')" #| /bin/sed -n 's/var wan_rxbs="\(.*\)";/\1/p') * 8 / 1000
