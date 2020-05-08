@@ -18,31 +18,24 @@ ng_credentials="-u $netgear_username:$netgear_password"
 
 echo "[Info] Starting uploading txbs and rxbs every $refresh_interval seconds"
 
-txbs=""
-rxbs=""
-
-topic_txbs="$topic/txbs"
-topic_rxbs="$topic/rxbs"
-
 ng_url="http://$netgear_url/RST_statistic.htm"
 
 while true; do
 
 	#curl $ng_credentials -s $ng_url
 	
-	txbs="$(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm')" #| /bin/sed -n 's/var wan_txbs="\(.*\)";/\1/p') * 8 / 1000
-	rxbs="$(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm')" #| /bin/sed -n 's/var wan_rxbs="\(.*\)";/\1/p') * 8 / 1000
+	ng_data="$(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm')" #| /bin/sed -n 's/var wan_txbs="\(.*\)";/\1/p') * 8 / 1000
+	#rxbs="$(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm')" #| /bin/sed -n 's/var wan_rxbs="\(.*\)";/\1/p') * 8 / 1000
 	
-	echo "$txbs"
+	echo "$ng_data"
 	
-	sedtxbs= $(sed -n 's/var wan_txbs="\(.*\)";/\1/p' < $txbs)
+	sedtxbs=$(sed -n 's/var wan_txbs="\(.*\)";/\1/p' < $ng_data)
+	sedrxbs=$(sed -n 's/var wan_rxbs="\(.*\)";/\1/p' < $ng_data)
 	
 	echo "$sedtxbs"
 	
-	mosquitto_pub -h $mosquitto_server -p $mosquitto_port -u $mosquitto_username -p $mosquitto_password -t $topic_txbs -m $txbs
-	mosquitto_pub -h $mosquitto_server -p $mosquitto_port -u $mosquitto_username -p $mosquitto_password -t $topic_rxbs -m $rxbs
-	#mosquitto_pub -h localhost -t sensors/netgear/txbs -m $sedtxbs	
-		
+	python3 /pub.py -u $mosquitto_server -p $mosquitto_port -l $mosquitto_username -m $mosquitto_password -o $topic -t $sedtxbs -r $sedrxbs
+	
 	sleep $refresh_interval
 	
 done
