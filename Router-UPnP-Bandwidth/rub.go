@@ -62,7 +62,7 @@ func main() {
 				b = float64(recv)
 			}
 			c = (b - a) * 8 /1000 /1000
-			log.Println("Receive B/s:", c)
+			log.Println("Receive Mb/s:", c)
 
 			if sent, err := client.GetTotalBytesSent(); err != nil {
 				log.Println("Error requesting bytes sent:", err)
@@ -76,14 +76,14 @@ func main() {
 				e = float64(sent)
 			}
 			f = (e - d) * 8 /1000 /1000
-			log.Println("Sent B/s:", f)
+			log.Println("Sent Mb/s:", f)
 			
 			log.Println("---- doing publish ----")
 			if token := mqttclient.Connect(); token.Wait() && token.Error() != nil {
 				panic(token.Error())
 			}
-			token := mqttclient.Publish(*topic + "/txbs", 0, false, strconv.FormatFloat(c, 'f', 6, 64))	
-			token = mqttclient.Publish(*topic + "/rxbs", 0, false, strconv.FormatFloat(f, 'f', 6, 64))		
+			token := mqttclient.Publish(*topic + "/txbs", 0, false, strconv.FormatFloat(f, 'f', 6, 64))	
+			token = mqttclient.Publish(*topic + "/rxbs", 0, false, strconv.FormatFloat(c, 'f', 6, 64))		
 			token.Wait()
 			
 			time.Sleep(1 * time.Second)
