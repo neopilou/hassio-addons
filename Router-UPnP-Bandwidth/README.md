@@ -2,7 +2,7 @@
 Publish bandwidth txbs and rxbs in Mb/s of your UPnP router on MQTT
 
 ### About
-This add-on allows you to publish bandwidth txbs and rxbs traffic of your UPnP router on MQTT, work with Netgear R7800 and FritzBox (other models are not tested yet)
+This add-on allows you to publish bandwidth txbs and rxbs traffic in Mb/s of your UPnP router on MQTT, work with Netgear R7800 and FritzBox (other models are not tested yet)
 
 ### Installation
 1. Add the add-ons repository to your Hass.io instance: `https://github.com/neopilou/hassio-addons`
