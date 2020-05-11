@@ -6,7 +6,7 @@ This add-on allows you to publish bandwidth txbs and rxbs traffic of your UPnP r
 
 ### Installation
 1. Add the add-ons repository to your Hass.io instance: `https://github.com/neopilou/hassio-addons`
-2. Install the FTP Sync add-on
+2. Install the Router UPnP Bandwidth add-on
 3. Configure the add-on 
 
 ### Router UPnP XML URL
