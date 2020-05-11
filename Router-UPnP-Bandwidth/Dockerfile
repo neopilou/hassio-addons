@@ -5,7 +5,7 @@ FROM $BUILD_FROM
 ENV LANG C.UTF-8
 
 # Setup base
-RUN apk add --no-cache jq curl sed python3 go gcc libc-dev
+RUN apk add --no-cache curl gcc git go jq libc-dev python3 sed 
 
 # Copy data
 COPY run.sh /
