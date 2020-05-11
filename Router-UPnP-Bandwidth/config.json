@@ -30,5 +30,4 @@
 	"topic": "str",
 	"router_url": "str"
   }
-  "image": "homeassistant/{arch}-addon-router-upnp-bandwidth"
 }
