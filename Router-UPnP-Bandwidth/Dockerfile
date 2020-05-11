@@ -6,10 +6,10 @@ ENV LANG C.UTF-8
 
 # Setup base
 RUN apk add --no-cache jq curl sed python3 go gcc libc-dev
-RUN go get -u github.com/huin/goupnp
-RUN go get -u github.com/eclipse/paho.mqtt.golang
-RUN go get -u github.com/gorilla/websocket
-RUN go get -u golang.org/x/net/proxy
+RUN go get -u -v github.com/huin/goupnp
+RUN go get -u -v github.com/eclipse/paho.mqtt.golang
+RUN go get -u -v github.com/gorilla/websocket
+RUN go get -u -v golang.org/x/net/proxy
 
 # Copy data
 COPY run.sh /
