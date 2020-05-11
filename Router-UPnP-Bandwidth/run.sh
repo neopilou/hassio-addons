@@ -14,4 +14,9 @@ router_url=$(jq --raw-output ".router_url" $CONFIG_PATH)
 	
 mqtt_url="$mqtt_protocol://$mqtt_server:$mqtt_port"
 	
+go get -u -v github.com/huin/goupnp
+go get -u -v github.com/eclipse/paho.mqtt.golang
+go get -u -v github.com/gorilla/websocket
+go get -u -v golang.org/x/net/proxy
+	
 go run rub.go -router $router_url -user $mqtt_username -password $mqtt_password -broker $mqtt_url -topic $topic
