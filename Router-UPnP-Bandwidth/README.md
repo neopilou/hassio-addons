@@ -10,9 +10,11 @@ This add-on allows you to publish bandwidth txbs and rxbs traffic in Mb/s of you
 3. Configure the add-on 
 
 ### Router UPnP XML URL
+
 #### URL known to the following routers:
 - Netgear R7800 : http://192.168.0.1:5555/rootDesc.xml
 - FritzBox : http://fritz.box:49000/igddesc.xml
+
 #### How to get UPnP XML URL
 You can use "upnp_info.py" in this repository
 
