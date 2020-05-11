@@ -16,5 +16,5 @@ https://github.com/neopilou/hassio-addons
 #### FTP Sync : 
 Upload your Hass.io backups to FTP Server.
 
-#### Netgear Sensors
-Publish txbs and rxbs in Mb/s of Netgear router on MQTT
+#### Router UPnP Bandwidth
+Publish bandwidth txbs and rxbs in Mb/s of UPnP router on MQTT
