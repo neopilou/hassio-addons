@@ -55,13 +55,13 @@ func main() {
 			} else {
 				a = float64(recv)
 			}
-			time.Sleep(1 * time.Second)
+			time.Sleep(time.Second)
 			if recv, err := client.GetTotalBytesReceived(); err != nil {
 				log.Println("Error requesting bytes received:", err)
 			} else {
 				b = float64(recv)
 			}
-			c = (b - a) * 8 /1000 /1000
+			c = (b - a) * 8 / 1000 / 1000
 			log.Println("Receive Mb/s:", c)
 
 			if sent, err := client.GetTotalBytesSent(); err != nil {
@@ -69,13 +69,13 @@ func main() {
 			} else {
 				d = float64(sent)
 			}
-			time.Sleep(1 * time.Second)
+			time.Sleep(time.Second)
 			if sent, err := client.GetTotalBytesSent(); err != nil {
 				log.Println("Error requesting bytes sent:", err)
 			} else {
 				e = float64(sent)
 			}
-			f = (e - d) * 8 /1000 /1000
+			f = (e - d) * 8 / 1000 / 1000
 			log.Println("Sent Mb/s:", f)
 			
 			log.Println("---- doing publish ----")
