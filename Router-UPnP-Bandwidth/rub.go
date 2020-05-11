@@ -50,6 +50,9 @@ func main() {
 
 	for x == true {
 		for _, client := range clients {
+			if token := mqttclient.Connect(); token.Wait() && token.Error() != nil {
+				panic(token.Error())
+			}
 			if recv, err := client.GetTotalBytesReceived(); err != nil {
 				log.Println("Error requesting bytes received:", err)
 			} else {
@@ -63,6 +66,7 @@ func main() {
 			}
 			c = (b - a) * 8 / 1000 / 1000
 			log.Println("Receive Mb/s:", c)
+			token := mqttclient.Publish(*topic + "/rxbs", 0, false, strconv.FormatFloat(c, 'f', 6, 64))
 
 			if sent, err := client.GetTotalBytesSent(); err != nil {
 				log.Println("Error requesting bytes sent:", err)
@@ -77,13 +81,8 @@ func main() {
 			}
 			f = (e - d) * 8 / 1000 / 1000
 			log.Println("Sent Mb/s:", f)
-			
-			log.Println("---- doing publish ----")
-			if token := mqttclient.Connect(); token.Wait() && token.Error() != nil {
-				panic(token.Error())
-			}
-			token := mqttclient.Publish(*topic + "/txbs", 0, false, strconv.FormatFloat(f, 'f', 6, 64))	
-			token = mqttclient.Publish(*topic + "/rxbs", 0, false, strconv.FormatFloat(c, 'f', 6, 64))		
+			token = mqttclient.Publish(*topic + "/txbs", 0, false, strconv.FormatFloat(f, 'f', 6, 64))	
+								
 			token.Wait()
 		}
 	}
