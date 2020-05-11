@@ -85,8 +85,6 @@ func main() {
 			token := mqttclient.Publish(*topic + "/txbs", 0, false, strconv.FormatFloat(f, 'f', 6, 64))	
 			token = mqttclient.Publish(*topic + "/rxbs", 0, false, strconv.FormatFloat(c, 'f', 6, 64))		
 			token.Wait()
-			
-			time.Sleep(1 * time.Second)
 		}
 	}
 }
