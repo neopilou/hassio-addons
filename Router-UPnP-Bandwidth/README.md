@@ -18,6 +18,9 @@ This add-on allows you to publish bandwidth txbs and rxbs traffic in Mb/s of you
 #### How to get UPnP XML URL
 You can use "upnp_info.py" in this repository
 
+### Does not work with these routers:
+- Freebox V6 (Revolution)
+
 ### Configuration
 
 |Parameter|Required|Description|
