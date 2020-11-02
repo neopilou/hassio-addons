@@ -12,7 +12,7 @@ wget \
 findutils \
 python3 \
 python3-dev \
-&& pip3 install requests python-dateutil==2.6.1 pytz==2018.3
+&& pip3 install requests python-dateutil==2.6.1 pytz==2020.1
 
 # Copy data
 COPY run.sh /
