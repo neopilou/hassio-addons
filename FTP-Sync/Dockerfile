@@ -12,7 +12,7 @@ wget \
 findutils \
 python3 \
 python3-dev
-RUN pip3 requests
+RUN pip requests
 #RUN pip3 install python-dateutil==2.8.1 pytz==2020.1
 
 # Copy data
