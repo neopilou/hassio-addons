@@ -1,6 +1,6 @@
 {
   "name": "FTP Sync",
-  "version": "0.061",
+  "version": "0.062",
   "slug": "ftp_sync",
   "description": "Upload your Hass.io backups to FTP Server",
   "url": "https://github.com/neopilou/hassio-addons",
