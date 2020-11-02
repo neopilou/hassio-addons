@@ -11,8 +11,10 @@ curl \
 wget \
 findutils \
 python3 \
-python3-dev \
-&& pip3 install requests
+python3-dev
+RUN curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
+RUN python3 get-pip.py --user
+RUN pip3 install requests
 #RUN pip3 install python-dateutil==2.8.1 pytz==2020.1
 
 # Copy data
