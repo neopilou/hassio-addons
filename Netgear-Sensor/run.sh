@@ -17,11 +17,11 @@ ng_credentials="--user $netgear_username:$netgear_password"
 
 echo "[Info] Starting uploading txbs and rxbs every $refresh_interval seconds"
 
-txbsA=""
-rxbsA=""
+txbs1=""
+rxbs1=""
 
-txbsB=""
-rxbsB=""
+txbs2=""
+rxbs2=""
 
 txbs=""
 rxbs=""
@@ -31,16 +31,16 @@ topic_rxbs="$topic/rxbs"
 
 while true; do
 	
-	txbsA= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | /bin/sed -n 's/var wan_txbs="\(.*\)";/\1/p') * 8 / 1000
-	rxbsA= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | /bin/sed -n 's/var wan_txbs="\(.*\)";/\1/p') * 8 / 1000
+	txbs1= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | /bin/sed -n 's/var wan_txbs="\(.*\)";/\1/p') * 8 / 1000
+	rxbs1= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | /bin/sed -n 's/var wan_rxbs="\(.*\)";/\1/p') * 8 / 1000
 	
 	sleep 1
 	
-	txbsB= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | /bin/sed -n 's/var wan_txbs="\(.*\)";/\1/p') * 8 / 1000
-	rxbsB= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | /bin/sed -n 's/var wan_txbs="\(.*\)";/\1/p') * 8 / 1000
+	txbs2= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | /bin/sed -n 's/var wan_txbs="\(.*\)";/\1/p') * 8 / 1000
+	rxbs2= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | /bin/sed -n 's/var wan_rxbs="\(.*\)";/\1/p') * 8 / 1000
 	
-	txbs= txbsB - txbsA
-	rxbs= rxbsA - rxbsB
+	txbs= txbs2 - txbs1
+	rxbs= rxbs2 - rxbs1
 	
 	/usr/bin/mosquitto_pub -h $mqtt_server -p $mqtt_port -u $mqtt_username -p $mqtt_password -t $topic_txbs -m $txbs
 	/usr/bin/mosquitto_pub -h $mqtt_server -p $mqtt_port -u $mqtt_username -p $mqtt_password -t $topic_rxbs -m $rxbs
