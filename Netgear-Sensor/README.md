@@ -6,7 +6,7 @@ This add-on allows you to publish txbs and rxbs traffic of you netgear router on
 
 ### Installation
 1. Add the add-ons repository to your Hass.io instance: `https://github.com/neopilou/hassio-addons`
-2. Install the FTP Sync add-on
+2. Install the Netgear Sensor add-on
 3. Configure the add-on 
 
 ### Configuration
