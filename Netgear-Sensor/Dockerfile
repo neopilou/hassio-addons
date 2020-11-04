@@ -5,7 +5,7 @@ FROM $BUILD_FROM
 ENV LANG C.UTF-8
 
 # Setup base
-RUN apk add --no-cache jq curl mosquitto-clients sed coreutils
+RUN apk add --no-cache sed jq curl mosquitto-clients coreutils
 
 # Copy data
 COPY cmd.sh /
