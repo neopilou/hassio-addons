@@ -9,9 +9,7 @@ RUN apk add --no-cache jq curl mosquitto-clients sed coreutils
 
 # Copy data
 COPY cmd.sh /
-COPY run.sh /
 RUN ["chmod", "a+x", "/cmd.sh"]
-RUN ["chmod", "a+x", "/run.sh"]
 WORKDIR /
 
 CMD [ "/cmd.sh" ]
