@@ -42,8 +42,8 @@ while true; do
 	txbs= txbsB - txbsA
 	rxbs= rxbsA - rxbsB
 	
-	/usr/bin/mosquitto_pub -h $mqtt_server -p $mqtt_port -u $mqtt_username -p $mqtt_password -t $topic_txbs -m $txbs
-	/usr/bin/mosquitto_pub -h $mqtt_server -p $mqtt_port -u $mqtt_username -p $mqtt_password -t $topic_rxbs -m $rxbs
+	echo "/usr/bin/mosquitto_pub -h $mqtt_server -p $mqtt_port -u $mqtt_username -p $mqtt_password -t $topic_txbs -m $txbs"
+	echo "/usr/bin/mosquitto_pub -h $mqtt_server -p $mqtt_port -u $mqtt_username -p $mqtt_password -t $topic_rxbs -m $rxbs"
 		
 	sleep 1
 	
