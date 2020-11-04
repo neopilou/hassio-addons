@@ -32,7 +32,7 @@ topic_rxbs="$topic/rxbs"
 while true; do
 	
 	txbsA= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm') 
-	rxbsA= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | sed -n 's/var wan_txbs="\(.*\)";/\1/p') * 8 / 1000
+	rxbsA= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | sed -n 's/var wan_txbs="\(.*\)";/\1/p')
 	
 	sleep 1
 	
@@ -42,7 +42,7 @@ while true; do
 	txbs= txbsB - txbsA
 	rxbs= rxbsB - rxbsA
 	
-	/usr/bin/mosquitto_pub -h $mqtt_server -p 1883 -u $mqtt_username -p $mqtt_password -t $topic_txbs -m "150"
+	/usr/bin/mosquitto_pub -h $mqtt_server -p '1883' -u $mqtt_username -p $mqtt_password -t $topic_txbs -m "150"
 	/usr/bin/mosquitto_pub -h $mqtt_server -p $mqtt_port -u $mqtt_username -p $mqtt_password -t $topic_rxbs -m $rxbs
 		
 	sleep 1
