@@ -31,12 +31,6 @@ topic_rxbs="$topic/rxbs"
 
 while true; do
 	
-	txbs1= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | /bin/sed -n 's/var wan_txbs="\(.*\)";/\1/p') * 8 / 1000
-	rxbs1= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | /bin/sed -n 's/var wan_rxbs="\(.*\)";/\1/p') * 8 / 1000
-	
-	txbs2= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | /bin/sed -n 's/var wan_txbs="\(.*\)";/\1/p') * 8 / 1000
-	rxbs2= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | /bin/sed -n 's/var wan_rxbs="\(.*\)";/\1/p') * 8 / 1000
-	
 	txbs= txbs2 - txbs1
 	rxbs= rxbs2 - rxbs1	
 	
