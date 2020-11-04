@@ -31,13 +31,13 @@ topic_rxbs="$topic/rxbs"
 
 while true; do
 	
-	txbsA= $(/usr/bin/curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | /bin/sed -n 's/var wan_txbs="\(.*\)";/\1/p') * 8 / 1000
-	rxbsA= $(/usr/bin/curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | /bin/sed -n 's/var wan_txbs="\(.*\)";/\1/p') * 8 / 1000
+	txbsA= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | sed -n 's/var wan_txbs="\(.*\)";/\1/p') * 8 / 1000
+	rxbsA= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | sed -n 's/var wan_txbs="\(.*\)";/\1/p') * 8 / 1000
 	
 	sleep 1
 	
-	txbsB= $(/usr/bin/curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | /bin/sed -n 's/var wan_txbs="\(.*\)";/\1/p') * 8 / 1000
-	rxbsB= $(/usr/bin/curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | /bin/sed -n 's/var wan_txbs="\(.*\)";/\1/p') * 8 / 1000
+	txbsB= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | sed -n 's/var wan_txbs="\(.*\)";/\1/p') * 8 / 1000
+	rxbsB= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | sed -n 's/var wan_txbs="\(.*\)";/\1/p') * 8 / 1000
 	
 	txbs= txbsB - txbsA
 	rxbs= rxbsB - rxbsA
