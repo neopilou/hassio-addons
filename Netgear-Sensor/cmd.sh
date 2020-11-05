@@ -43,6 +43,9 @@ while true; do
 	txbsA= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | sed -n 's/var wan_txbs="\(.*\)";/\1/p')
 	rxbsA= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | sed -n 's/var wan_txbs="\(.*\)";/\1/p')
 	
+	echo "[Info] $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm')
+	echo "[Info] $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | sed -n 's/var wan_txbs="\(.*\)";/\1/p')
+	
 	echo "[Info] txbsA = $txbsA"
 	echo "[Info] rxbsA = $rxbsA"
 	
