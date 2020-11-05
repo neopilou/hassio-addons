@@ -39,8 +39,8 @@ while true; do
 	txbsB= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | sed -n 's/var wan_txbs="\(.*\)";/\1/p')
 	rxbsB= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | sed -n 's/var wan_txbs="\(.*\)";/\1/p')
 	
-	txbs= txbsB - txbsA
-	rxbs= rxbsB - rxbsA
+	let txbs=txbsB-txbsA
+	let rxbs=rxbsB-rxbsA
 	
 	let txbs=txbs*8/1000
 	let rxbs=rxbs*8/1000
