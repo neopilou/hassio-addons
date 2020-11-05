@@ -43,7 +43,7 @@ while true; do
 	txbsA= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | sed -n 's/var wan_txbs="\(.*\)";/\1/p')
 	rxbsA= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | sed -n 's/var wan_txbs="\(.*\)";/\1/p')
 	
-	echo "[Info] $(/bin/curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm')"
+	echo "[Info] $(/usr/bin/curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm')"
 	echo "[Info] $(curl -s 'http://$netgear_username:$netgear_password@$netgear_url/RST_statistic.htm')"
 	echo "[Info] $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | sed -n 's/var wan_txbs="\(.*\)";/\1/p')"
 	
@@ -52,7 +52,7 @@ while true; do
 	
 	sleep 1
 	
-	txbsB= $(/bin/curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | /bin/sed -n 's/var wan_txbs="\(.*\)";/\1/p')
+	txbsB= $(/usr//bin/curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | /bin/sed -n 's/var wan_txbs="\(.*\)";/\1/p')
 	rxbsB= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | sed -n 's/var wan_txbs="\(.*\)";/\1/p')
 	
 	echo "[Info] txbsB = $txbsB"
