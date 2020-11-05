@@ -33,7 +33,7 @@ echo "[Info] Starting uploading txbs and rxbs every $refresh_interval seconds"
 
 while true; do
 	
-	txbsA=$(curl --user admin:tr1n1ty! -s 'http://192.168.0.1/RST_statistic.htm' | sed -n 's/var wan_txbs="\(.*\)";/\1/p')
+	txbsA=$(curl --user $netgear_username:$netgear_password -s 'http://192.168.0.1/RST_statistic.htm' | sed -n 's/var wan_txbs="\(.*\)";/\1/p')
 	rxbsA=$(curl --user $netgear_username:$netgear_password -s 'http://$netgear_url/RST_statistic.htm' | sed -n 's/var wan_txbs="\(.*\)";/\1/p')
 	
 	echo "[Info] txbsA = $txbsA"
