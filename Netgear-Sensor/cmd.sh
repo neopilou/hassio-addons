@@ -15,8 +15,6 @@ netgear_password=$(jq --raw-output ".netgear_password" $CONFIG_PATH)
 
 ng_credentials="--user $netgear_username:$netgear_password"
 
-echo "[Info] Starting uploading txbs and rxbs every $refresh_interval seconds"
-
 txbsA=""
 rxbsA=""
 
@@ -28,6 +26,17 @@ rxbs=""
 
 topic_txbs="$topic/txbs"
 topic_rxbs="$topic/rxbs"
+
+echo "[Info] MQTT Server : $mqtt_server"
+echo "[Info] MQTT Port : $mqtt_port"
+echo "[Info] Topic: $topic"
+echo "[Info] MQTT Username : $mqtt_username"
+echo "[Info] MQQT Password : $mqtt_password"
+echo "[Info] Netgear URL : $netgear_url"
+echo "[Info] Netgear Username : $netgear_username"
+echo "[Info] Netgear Password : $netgear_password"
+
+echo "[Info] Starting uploading txbs and rxbs every $refresh_interval seconds"
 
 while true; do
 	
