@@ -27,32 +27,19 @@ rxbs=""
 topic_txbs="$topic/txbs"
 topic_rxbs="$topic/rxbs"
 
-echo "[Info] MQTT Server : $mqtt_server"
-echo "[Info] MQTT Port : $mqtt_port"
-echo "[Info] Topic: $topic"
-echo "[Info] MQTT Username : $mqtt_username"
-echo "[Info] MQQT Password : $mqtt_password"
-echo "[Info] Netgear URL : $netgear_url"
-echo "[Info] Netgear Username : $netgear_username"
-echo "[Info] Netgear Password : $netgear_password"
-
 echo "[Info] Starting uploading txbs and rxbs every $refresh_interval seconds"
 
 while true; do
 	
-	txbsA= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | sed -n 's/var wan_txbs="\(.*\)";/\1/p')
-	rxbsA= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | sed -n 's/var wan_txbs="\(.*\)";/\1/p')
-	
-	echo "[Info] $(/usr/bin/curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm')"
-	echo "[Info] $(curl -s 'http://$netgear_username:$netgear_password@$netgear_url/RST_statistic.htm')"
-	echo "[Info] $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | sed -n 's/var wan_txbs="\(.*\)";/\1/p')"
+	txbsA=$(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | sed -n 's/var wan_txbs="\(.*\)";/\1/p')
+	rxbsA=$(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | sed -n 's/var wan_txbs="\(.*\)";/\1/p')
 	
 	echo "[Info] txbsA = $txbsA"
 	echo "[Info] rxbsA = $rxbsA"
 	
 	sleep 1
 	
-	txbsB= $(/usr//bin/curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | /bin/sed -n 's/var wan_txbs="\(.*\)";/\1/p')
+	txbsB= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | sed -n 's/var wan_txbs="\(.*\)";/\1/p')
 	rxbsB= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | sed -n 's/var wan_txbs="\(.*\)";/\1/p')
 	
 	echo "[Info] txbsB = $txbsB"
@@ -67,7 +54,7 @@ while true; do
 	echo "[Info] txbs = $txbs"
 	echo "[Info] rxbs = $rxbs"
 	
-	/usr/bin/mosquitto_pub -h $mqtt_server -p $mqtt_port -u $mqtt_username -p $mqtt_password -t $topic_txbs -m "150"
+	mosquitto_pub -h $mqtt_server -p $mqtt_port -u $mqtt_username -p $mqtt_password -t $topic_txbs -m "150"
 	/usr/bin/mosquitto_pub -h $mqtt_server -p $mqtt_port -u $mqtt_username -p $mqtt_password -t $topic_rxbs -m $rxbs
 		
 	sleep 1
