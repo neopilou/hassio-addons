@@ -34,10 +34,16 @@ while true; do
 	txbsA= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | sed -n 's/var wan_txbs="\(.*\)";/\1/p')
 	rxbsA= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | sed -n 's/var wan_txbs="\(.*\)";/\1/p')
 	
+	echo "[Info] txbsA = $txbsA"
+	echo "[Info] rxbsA = $rxbsA"
+	
 	sleep 1
 	
 	txbsB= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | sed -n 's/var wan_txbs="\(.*\)";/\1/p')
 	rxbsB= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | sed -n 's/var wan_txbs="\(.*\)";/\1/p')
+	
+	echo "[Info] txbsB = $txbsB"
+	echo "[Info] rxbsB = $rxbsB"
 	
 	let txbs=txbsB-txbsA
 	let rxbs=rxbsB-rxbsA
@@ -48,7 +54,7 @@ while true; do
 	echo "[Info] txbs = $txbs"
 	echo "[Info] rxbs = $rxbs"
 	
-	/usr/bin/mosquitto_pub -h $mqtt_server -p '1883' -u $mqtt_username -p $mqtt_password -t $topic_txbs -m "150"
+	/usr/bin/mosquitto_pub -h $mqtt_server -p $mqtt_port -u $mqtt_username -p $mqtt_password -t $topic_txbs -m "150"
 	/usr/bin/mosquitto_pub -h $mqtt_server -p $mqtt_port -u $mqtt_username -p $mqtt_password -t $topic_rxbs -m $rxbs
 		
 	sleep 1
