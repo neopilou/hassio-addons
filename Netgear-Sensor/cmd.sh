@@ -29,7 +29,7 @@ echo "[Info] Starting uploading txbs and rxbs every $refresh_interval seconds"
 
 while true; do
 	
-	txbsA=$(curl --user $netgear_username:$netgear_password -s 'http://'$netgear_url'RST_statistic.htm' | sed -n 's/var wan_txbs="\(.*\)";/\1/p')
+	txbsA=$(curl --user $netgear_username:$netgear_password -s 'http://'$netgear_url'/RST_statistic.htm' | sed -n 's/var wan_txbs="\(.*\)";/\1/p')
 	rxbsA=$(curl --user $netgear_username:$netgear_password -s 'http://'$netgear_url'/RST_statistic.htm' | sed -n 's/var wan_rxbs="\(.*\)";/\1/p')
 	
 	echo "[Info] txbsA = $txbsA"
@@ -37,8 +37,8 @@ while true; do
 	
 	sleep 1
 	
-	txbsB= $(curl --user $netgear_username:$netgear_password -s 'http://'$netgear_url'/RST_statistic.htm' | sed -n 's/var wan_txbs="\(.*\)";/\1/p')
-	rxbsB= $(curl --user $netgear_username:$netgear_password -s 'http://'$netgear_url'/RST_statistic.htm' | sed -n 's/var wan_rxbs="\(.*\)";/\1/p')
+	txbsB=$(curl --user $netgear_username:$netgear_password -s 'http://'$netgear_url'/RST_statistic.htm' | sed -n 's/var wan_txbs="\(.*\)";/\1/p')
+	rxbsB=$(curl --user $netgear_username:$netgear_password -s 'http://'$netgear_url'/RST_statistic.htm' | sed -n 's/var wan_rxbs="\(.*\)";/\1/p')
 	
 	echo "[Info] txbsB = $txbsB"
 	echo "[Info] rxbsB = $rxbsB"
