@@ -33,8 +33,8 @@ echo "[Info] Starting uploading txbs and rxbs every $refresh_interval seconds"
 
 while true; do
 	
-	txbsA=$(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | sed -n 's/var wan_txbs="\(.*\)";/\1/p')
-	rxbsA=$(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | sed -n 's/var wan_txbs="\(.*\)";/\1/p')
+	txbsA=$(curl --user admin:tr1n1ty! -s 'http://192.168.0.1/RST_statistic.htm' | sed -n 's/var wan_txbs="\(.*\)";/\1/p')
+	rxbsA=$(curl --user $netgear_username:$netgear_password -s 'http://$netgear_url/RST_statistic.htm' | sed -n 's/var wan_txbs="\(.*\)";/\1/p')
 	
 	echo "[Info] txbsA = $txbsA"
 	echo "[Info] rxbsA = $rxbsA"
@@ -58,7 +58,5 @@ while true; do
 	
 	mosquitto_pub -h $mqtt_server -p $mqtt_port -u $mqtt_username -P $mqtt_password -t $topic_txbs -m $txbs
 	mosquitto_pub -h $mqtt_server -p $mqtt_port -u $mqtt_username -P $mqtt_password -t $topic_rxbs -m $rxbs
-		
-	sleep 1
 	
 done
