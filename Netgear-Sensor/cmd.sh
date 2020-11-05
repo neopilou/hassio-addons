@@ -15,6 +15,8 @@ netgear_password=$(jq --raw-output ".netgear_password" $CONFIG_PATH)
 
 ng_credentials="--user $netgear_username:$netgear_password"
 
+echo "[Info] NetGear Credentials = $ng_credentials"
+
 txbsA=""
 rxbsA=""
 
