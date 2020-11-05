@@ -15,7 +15,7 @@ netgear_password=$(jq --raw-output ".netgear_password" $CONFIG_PATH)
 
 ng_credentials="--user $netgear_username:$netgear_password"
 
-txbsA=""
+txbsa=""
 rxbsA=""
 
 txbsB=""
@@ -31,10 +31,10 @@ echo "[Info] Starting uploading txbs and rxbs every $refresh_interval seconds"
 
 while true; do
 	
-	txbsA=$(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | sed -n 's/var wan_txbs="\(.*\)";/\1/p')
+	txbs=$(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | sed -n 's/var wan_txbs="\(.*\)";/\1/p')
 	rxbsA=$(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | sed -n 's/var wan_txbs="\(.*\)";/\1/p')
 	
-	echo "[Info] txbsA = $txbsA"
+	echo "[Info] txbsA = $txbsa"
 	echo "[Info] rxbsA = $rxbsA"
 	
 	sleep 1
@@ -45,17 +45,17 @@ while true; do
 	echo "[Info] txbsB = $txbsB"
 	echo "[Info] rxbsB = $rxbsB"
 	
-	let txbs=txbsB-txbsA
+	let txbsa=txbsB-txbs
 	let rxbs=rxbsB-rxbsA
 	
-	let txbs=txbs*8/1000
+	let txbsa=txbsa*8/1000
 	let rxbs=rxbs*8/1000
 	
 	echo "[Info] txbs = $txbs"
 	echo "[Info] rxbs = $rxbs"
 	
-	mosquitto_pub -h $mqtt_server -p $mqtt_port -u $mqtt_username -p $mqtt_password -t $topic_txbs -m "150"
-	/usr/bin/mosquitto_pub -h $mqtt_server -p $mqtt_port -u $mqtt_username -p $mqtt_password -t $topic_rxbs -m $rxbs
+	mosquitto_pub -h $mqtt_server -p $mqtt_port -u $mqtt_username -p $mqtt_password -t $topic_txbs -m $txbs
+	mosquitto_pub -h $mqtt_server -p $mqtt_port -u $mqtt_username -p $mqtt_password -t $topic_rxbs -m $rxbs
 		
 	sleep 1
 	
