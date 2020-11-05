@@ -1,6 +1,6 @@
 {
   "name": "Netgear Sensors",
-  "version": "0.0994",
+  "version": "0.0995",
   "slug": "netgear_sensors",
   "description": "Publish txbs and rxbs in Mb/s of Netgear router on MQTT",
   "url": "https://github.com/neopilou/hassio-addons",
