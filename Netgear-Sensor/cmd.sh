@@ -39,11 +39,14 @@ while true; do
 	txbsB= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | sed -n 's/var wan_txbs="\(.*\)";/\1/p')
 	rxbsB= $(curl $ng_credentials -s 'http://$netgear_url/RST_statistic.htm' | sed -n 's/var wan_txbs="\(.*\)";/\1/p')
 	
-	let txbs= txbsB - txbsA
-	let rxbs= rxbsB - rxbsA
+	txbs= txbsB - txbsA
+	rxbs= rxbsB - rxbsA
 	
-	let txbs= $txbs * 8 / 1000
-	let rxbs= $rxbs * 8 / 1000
+	let txbs=txbs*8/1000
+	let rxbs=rxbs*8/1000
+	
+	echo "[Info] txbs = $txbs"
+	echo "[Info] rxbs = $rxbs"
 	
 	/usr/bin/mosquitto_pub -h $mqtt_server -p '1883' -u $mqtt_username -p $mqtt_password -t $topic_txbs -m "150"
 	/usr/bin/mosquitto_pub -h $mqtt_server -p $mqtt_port -u $mqtt_username -p $mqtt_password -t $topic_rxbs -m $rxbs
