@@ -1,6 +1,6 @@
 {
   "name": "Send Serial",
-  "version": "0.01",
+  "version": "0.022",
   "slug": "send_serial",
   "description": "Send text over Serial port",
   "url": "https://github.com/neopilou/hassio-addons",
@@ -12,14 +12,11 @@
     "i386"
   ],
   "stdin": true,
-  "hassio_api": true,
-  "hassio_role": "manager",
   "boot": "auto",
-  "map": ["backup"],
   "options": {
     "port": "/dev/ttyUSB0"
   },
   "schema": {
-    "port": "/dev/ttyUSB0"
+    "port": "str"
   }
 }

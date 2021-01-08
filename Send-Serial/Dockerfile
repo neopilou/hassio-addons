@@ -5,8 +5,8 @@ FROM $BUILD_FROM
 ENV LANG C.UTF-8
 
 # Setup base
-RUN apk add --no-cache python3 python3-dev stty && \
-    pip3 install pyserial
+#RUN apk add --no-cache python3 && \
+#    pip3 install pyserial
 
 # Copy data
 COPY run.sh /
