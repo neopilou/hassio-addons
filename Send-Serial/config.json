@@ -1,5 +1,5 @@
 {
-  "name": "Send Serial",
+  "name": "Send_Serial",
   "version": "0.01",
   "slug": "send_serial",
   "description": "Send text over Serial port",
