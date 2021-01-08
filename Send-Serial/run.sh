@@ -6,7 +6,9 @@ CONFIG_PATH=/data/options.json
 
 port=$(jq --raw-output ".port" $CONFIG_PATH)
 
-stty -F $port 38400 cread clocal cs8
+ls /dev/
+
+stty -F /dev/ttyUSB0 38400 cread clocal cs8
 
 echo "[Info] Listening for messages via stdin service call..."
 
