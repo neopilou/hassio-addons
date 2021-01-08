@@ -1,6 +1,6 @@
 {
   "name": "Send Serial",
-  "version": "0.02",
+  "version": "0.021",
   "slug": "send_serial",
   "description": "Send text over Serial port",
   "url": "https://github.com/neopilou/hassio-addons",
