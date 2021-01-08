@@ -12,14 +12,11 @@
     "i386"
   ],
   "stdin": true,
-  "hassio_api": true,
-  "hassio_role": "manager",
   "boot": "auto",
-  "map": ["backup"],
   "options": {
     "port": "/dev/ttyUSB0"
   },
   "schema": {
-    "port": "/dev/ttyUSB0"
+    "port": "str"
   }
 }
