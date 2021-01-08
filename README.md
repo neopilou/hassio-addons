@@ -18,6 +18,3 @@ Upload your Hass.io backups to FTP Server.
 
 #### Router UPnP Bandwidth
 Publish bandwidth txbs and rxbs in Mb/s of UPnP router on MQTT
-
-#### Send Serial
-Send text over Serial port
