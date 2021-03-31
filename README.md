@@ -16,8 +16,8 @@ https://github.com/neopilou/hassio-addons
 #### FTP Sync : 
 Upload your Hass.io backups to FTP Server.
 
-#### Router UPnP Bandwidth
+#### Router UPnP Bandwidth :
 Publish bandwidth txbs and rxbs in Mb/s of UPnP router on MQTT
 
-#### Tvheadend
+#### Tvheadend :
 Tvheadend server
