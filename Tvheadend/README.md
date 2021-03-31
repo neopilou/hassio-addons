@@ -12,3 +12,9 @@ This add-on add Tvheadend server
 ### Configuration
 
 Nothing :)
+
+### Access
+
+HTTP : http://hass-url:9981
+HTSP : hass-url:9982 
+
