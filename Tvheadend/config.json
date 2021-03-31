@@ -1,0 +1,15 @@
+{
+  "name": "Tvheadend",
+  "version": "0.01",
+  "slug": "tvheadend",
+  "description": "Tveheadend server",
+  "url": "https://github.com/neopilou/hassio-addons",
+  "startup": "before",
+  "arch": [
+    "aarch64",
+    "amd64",
+    "armhf",
+    "i386"
+  ],
+  "boot": "auto"
+}
