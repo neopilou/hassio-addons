@@ -14,7 +14,8 @@
     "9982/tcp": 9982
   },
   "ports_description": {
-    "9981/tcp": "Not required for Ingress"
+    "9981/tcp": "For HTTP (web) server, Not required for Ingress",
+    "9982/tcp": "For HTSP server"
   },
   "arch": [
     "aarch64",
