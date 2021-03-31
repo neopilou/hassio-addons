@@ -3,5 +3,3 @@
 echo "[Info] Starting Tvheadend docker!"
 
 tvheadend -C
-	
-done
