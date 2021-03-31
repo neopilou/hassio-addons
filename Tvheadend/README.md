@@ -15,6 +15,6 @@ Nothing :)
 
 ### Access
 
-HTTP : http://hass-url:9981
-HTSP : hass-url:9982 
+- HTTP : hass-url:9981
+- HTSP : hass-url:9982 
 
