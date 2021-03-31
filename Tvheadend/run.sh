@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "[Info] Starting Netgear Sensors docker!"
+echo "[Info] Starting Tvheadend docker!"
 
 tvheadend -C
 	
