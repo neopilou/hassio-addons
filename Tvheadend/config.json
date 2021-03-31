@@ -10,7 +10,7 @@
   "ingress_port": 9981,
   "map": ["ssl"],
   "ports": {
-    "9981/tcp": null
+    "9981/tcp": null,
     "9982/tcp": 9982
   },
   "ports_description": {
