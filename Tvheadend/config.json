@@ -1,6 +1,6 @@
 {
   "name": "Tvheadend",
-  "version": "0.04",
+  "version": "0.05",
   "slug": "tvheadend",
   "description": "Tveheadend server",
   "url": "https://github.com/neopilou/hassio-addons",
@@ -32,6 +32,7 @@
   "schema": {
     "certfile": "str",
     "keyfile": "str",
-    "ssl": "bool"
+    "ssl": "bool",
+    "grafana_ingress_user": "str?",
   }  
 }
