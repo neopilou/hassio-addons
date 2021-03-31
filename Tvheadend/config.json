@@ -1,6 +1,6 @@
 {
   "name": "Tvheadend",
-  "version": "0.02",
+  "version": "0.03",
   "slug": "tvheadend",
   "description": "Tveheadend server",
   "url": "https://github.com/neopilou/hassio-addons",
