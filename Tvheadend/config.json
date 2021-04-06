@@ -33,6 +33,6 @@
     "certfile": "str",
     "keyfile": "str",
     "ssl": "bool",
-    "grafana_ingress_user": "str?",
+    "grafana_ingress_user": "str?"
   }  
 }
