@@ -6,7 +6,7 @@ ENV LANG C.UTF-8
 
 # Copy data
 COPY xteve /
-RUN ["chmod", "x", "/xteve"]
+RUN ["chmod", "+x", "/xteve"]
 WORKDIR /
 
 CMD [ "./xteve" ]
