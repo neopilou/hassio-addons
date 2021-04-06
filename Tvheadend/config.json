@@ -1,10 +1,11 @@
 {
   "name": "Tvheadend",
-  "version": "0.07",
+  "version": "0.08",
   "slug": "tvheadend",
   "description": "Tveheadend server",
   "url": "https://github.com/neopilou/hassio-addons",
   "startup": "services",
+  "webui": "http://[HOST]:[PORT:9981]",
   "host_network": "true",
   "boot": "auto",
   "ports": {
