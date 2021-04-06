@@ -1,6 +1,6 @@
 {
   "name": "xTeVe",
-  "version": "0.066",
+  "version": "0.067",
   "slug": "xteve",
   "description": "xTeVe server",
   "url": "https://github.com/neopilou/hassio-addons",
@@ -9,7 +9,7 @@
   "host_network": "true",
   "ingress": true,
   "ingress_port": 34400,
-  "ingress_entry" : "/web",
+  "ingress_entry" : "http://192.168.0.19:34400/web",
   "boot": "auto",
   "ports": {
     "34400/tcp": null
