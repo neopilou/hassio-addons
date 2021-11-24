@@ -12,7 +12,7 @@
    log level = 2
 
    bind interfaces only = yes
-   interfaces = {{ .interface }}
+   interfaces = eth0 wlan0
    hosts allow = {{ .allow_hosts | join " " }}
 
    {{ if .compatibility_mode }}
