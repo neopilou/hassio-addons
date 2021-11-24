@@ -26,7 +26,7 @@ bashio::log.info "Using hostname=${HOSTNAME} interface=${interface}"
 bashio::log.info "Using hostname=${HOSTNAME} interface=wlan0"
 
 # Generate Samba configuration.
-jq ".interface = \"${interface}\" wlan0" /data/options.json \
+jq ".interface = \"${interface}\" \"wlan0\"" /data/options.json \
     | tempio \
       -template /usr/share/tempio/smb.gtpl \
       -out /etc/samba/smb.conf
