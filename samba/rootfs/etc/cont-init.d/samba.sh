@@ -23,7 +23,7 @@ fi
 interface=$(bashio::network.name)
 
 bashio::log.info "Using hostname=${HOSTNAME} interface=${interface}"
-bashio::log.info "Using hostname=${HOSTNAME} interface=wlan0}"
+bashio::log.info "Using hostname=${HOSTNAME} interface=wlan0"
 
 # Generate Samba configuration.
 jq ".interface = \"${interface}\" wlan0" /data/options.json \
