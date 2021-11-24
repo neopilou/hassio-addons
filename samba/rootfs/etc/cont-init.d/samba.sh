@@ -22,7 +22,7 @@ fi
 # Get default interface
 interface=$(bashio::network.name)
 
-bashio::log.info "Using hostname=${HOSTNAME} interface=${interface}"
+bashio::log.info "Using hostnam=${HOSTNAME} interface=${interface}"
 bashio::log.info "Using hostname=${HOSTNAME} interface=wlan0"
 
 # Generate Samba configuration.
