@@ -8,8 +8,5 @@ ENV LANG C.UTF-8
 RUN apk add --no-cache tvheadend
 
 # Copy data
-COPY run.sh /
-RUN ["chmod", "a+x", "/run.sh"]
-WORKDIR /
-
-CMD [ "/run.sh" ]
+COPY rootfs /
+RUN ["chmod", "a+x", "/rootfs/etc/services.d/tvheadend/run"]
