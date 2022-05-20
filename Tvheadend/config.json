@@ -1,6 +1,6 @@
 {
   "name": "Tvheadend",
-  "version": "0.092",
+  "version": "0.093",
   "slug": "tvheadend",
   "description": "Tveheadend server",
   "url": "https://github.com/neopilou/hassio-addons",
@@ -10,6 +10,8 @@
   "boot": "auto",  
   "hassio_role": "default",
   "init": "false",
+  "host_network": true,
+  "host_pid": true,
   "ports": {
     "9981/tcp": 9981,
     "9982/tcp": 9982
