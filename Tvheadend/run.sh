@@ -4,4 +4,6 @@ echo "[Info] Starting Tvheadend docker!"
 
 find / -name tvheadend
 
-tvheadend -C -d -s
+/usr/bin/tvheadend -C -d -s
+
+echo "[Info] End !"
