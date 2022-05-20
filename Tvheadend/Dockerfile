@@ -9,4 +9,4 @@ RUN apk add --no-cache tvheadend
 
 # Copy data
 COPY rootfs /
-RUN ["chmod", "a+x", "/rootfs/etc/services.d/tvheadend/run"]
+RUN ["chmod", "a+x", "/etc/services.d/tvheadend/run"]
