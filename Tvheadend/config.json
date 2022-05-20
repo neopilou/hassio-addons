@@ -8,6 +8,7 @@
   "webui": "http://[HOST]:[PORT:9981]",
   "host_network": "true",
   "boot": "auto",
+  "init": "false",
   "ports": {
     "9981/tcp": 9981,
     "9982/tcp": 9982
