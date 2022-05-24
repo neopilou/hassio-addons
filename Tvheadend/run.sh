@@ -1,6 +1,6 @@
 #!/usr/bin/with-contenv bashio
 
-readonly SHARE=/addons/TVHeadEnd
+readonly ADDONS=/addons/TVHeadEnd
 
 if ! bashio::fs.directory_exists "$ADDONS"; then
     mkdir "$ADDONS"
