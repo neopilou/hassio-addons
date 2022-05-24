@@ -8,11 +8,11 @@ init: false
 map:
   - addons:rw 
 ports: 
-  - 9981/tcp: 9981
-  - 9982/tcp: 9982
+  9981/tcp: 9981
+  9982/tcp: 9982
 ports_description:
-  - 9981/tcp: For HTTP (web) server
-  - 9982/tcp: For HTSP server
+  9981/tcp: For HTTP (web) server
+  9982/tcp: For HTSP server
 arch: 
   - aarch64
   - amd64
