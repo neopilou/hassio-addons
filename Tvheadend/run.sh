@@ -2,6 +2,6 @@
 
 echo "[Info] Starting Tvheadend docker!"
 
-/usr/bin/tvheadend -C
+tvheadend -C
 
 echo "[Info] End !"
