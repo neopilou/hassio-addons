@@ -2,8 +2,6 @@
 
 echo "[Info] Starting Tvheadend docker!"
 
-find / -name tvheadend
-
-exec /usr/bin/tvheadend -C -d -s
+RUN /usr/bin/tvheadend -C
 
 echo "[Info] End !"

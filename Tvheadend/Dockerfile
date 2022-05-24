@@ -9,5 +9,5 @@ RUN apk add --update --no-cache tvheadend py-pip ffmpeg py3-lxml python3-dev g++
 RUN pip install --upgrade streamlink
 
 # Copy data
-COPY rootfs /
-RUN ["chmod", "a+x", "/etc/services.d/tvheadend/run"]
+COPY run.sh /
+RUN ["chmod", "a+x", "run.sh"]
