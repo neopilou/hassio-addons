@@ -2,7 +2,7 @@
 Tvheadend Server
 
 ### About
-This add-on add Tvheadend server
+This add-on add Tvheadend server with ffmpeg & streamlink
 
 ### Installation
 1. Add the add-ons repository to your Hass.io instance: `https://github.com/neopilou/hassio-addons`
