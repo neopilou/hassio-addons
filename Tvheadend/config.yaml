@@ -1,9 +1,10 @@
 name: TVHeadEnd
-version: "0.099991"
+version: "0.099992"
 slug: tvheadend
 description: TVHeadEnd server
 url: "https://github.com/neopilou/hassio-addons"
 ingress: true
+ingress_port: 9981
 full_access: true
 init: false
 map:
