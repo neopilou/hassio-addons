@@ -1,9 +1,9 @@
 name: TVHeadEnd
-version: "0.099998"
+version: "0.099999"
 slug: tvheadend
 description: TVHeadEnd server
 url: "https://github.com/neopilou/hassio-addons"
-webui: "http://[HOST]:[PORT:9981]"
+webui: "http://[HOST]:[PORT:9981]/"
 ingress: true
 ingress_port: 9981
 ingress_entry: / 
@@ -15,8 +15,8 @@ ports:
   9981/tcp: 9981
   9982/tcp: 9982
 ports_description:
-  9981/tcp: For HTTP (Web Interface)
-  9982/tcp: For HTSP server
+  9981/tcp: Web Interface (Not required for Ingress)
+  9982/tcp: HTSP server
 host_network: true
 options:
   ssl: true
